@@ -34,17 +34,15 @@ document
     agent(ex:Qualtrics,
         [ prov:type="prov:Software_Survey tool", s:givenName="Qualtrics", prov:description="External agent" ])
        
-    wasAttributedTo(ex:Survey, ex:Charlie)  
-    wasAttributedTo(ex:Survey, ex:City_Council)  
-
-    actedOnBehalfOf(ex:City_Council, ex:Charlie)
-    actedOnBehalfOf(ex:City_Council, ex:Charlie, ex:Survey, [prov:label="Representative of"])
-  
-    wasGeneratedBy(ex:Survey, ex:Qualtrics,-)
-  
-    wasAssociatedWith(ex:Survey, ex:Survey_Creation, -)
-    wasAssociatedWith(ex:City_Council, ex:Charlie, -)
-    wasAssociatedWith(ex:Survey_Creation, ex:Qualtrics, -)
+   wasAssociatedWith(ex:Survey, ex:Qualtrics, -) 
+   wasGeneratedBy(ex:Survey, ex:Survey_Creation,-)
+   wasAssociatedWith(ex:Survey_Creation, ex:Qualtrics, -)
+      
+    wasAttributedTo(ex:Survey, ex:Charlie) 
+    wasAttributedTo(ex:Survey, ex:City_Council)   
+      
+    actedOnBehalfOf(ex:City_Council, ex:Charlie)  
+      
 
     //Chenyu - 3
     entity(ex:Survey_Research, [prov:label="Survey Research", 
