@@ -35,33 +35,29 @@ document
         [ prov:type="prov:Software_Survey tool", s:givenName="Qualtrics", prov:description="External agent" ])
        
     wasAttributedTo(ex:Survey, ex:Charlie)  
-    wasAttributedTo(ex:Survey, ex:City_Council)  
 
-    actedOnBehalfOf(ex:City_Council, ex:Charlie)
-    actedOnBehalfOf(ex:City_Council, ex:Charlie, ex:Survey, [prov:label="Representative of"])
-  
+    actedOnBehalfOf(ex:Charlie, ex:City_Council, [prov:label="Representative of"])  
     wasGeneratedBy(ex:Survey, ex:Qualtrics,-)
   
     wasAssociatedWith(ex:Survey, ex:Survey_Creation, -)
-    wasAssociatedWith(ex:City_Council, ex:Charlie, -)
     wasAssociatedWith(ex:Survey_Creation, ex:Qualtrics, -)
 
     //Chenyu - 3
     entity(ex:Survey_Research, [prov:label="Survey Research", 
-        prov:description="Research conducted through surveys"])
-    entity(ex:DDI_template, [prov:label="DDI Template", 
-        prov:description="Template used for DDI"])
- 
-    activity(ex:Surveying,
-        [prov:label="Surveying",
-        prov:description="Activity involving conducting surveys"])
-    activity(ex:Metadata_Generation,
-        [prov:label="Metadata Generation",
-        prov:description="Generating metadata for the survey results"])
- 
-    wasGeneratedBy(ex:Surveying, ex:Survey_Research, -)
-    wasGeneratedBy(ex:Survey_Research, ex:Metadata_Generation, -)
-    wasGeneratedBy(ex:DDI_template, ex:Metadata_Generation, -)
+    prov:description="Research conducted through surveys"])
+entity(ex:DDI_template, [prov:label="DDI Template", 
+    prov:description="Template used for DDI"])
+
+activity(ex:Surveying,
+    [prov:label="Surveying",
+    prov:description="Activity involving conducting surveys"])
+activity(ex:Metadata_Generation,
+    [prov:label="Metadata Generation",
+    prov:description="Generating metadata for the survey results"])
+
+wasGeneratedBy(ex:Surveying, ex:Survey_Research, -)
+wasGeneratedBy(ex:Survey_Research, ex:Metadata_Generation, -)
+wasGeneratedBy(ex:DDI_template, ex:Metadata_Generation, -)
 
     //James - 4
     entity(ex:Metadata)
@@ -80,8 +76,7 @@ document
     wasGeneratedBy(ex:Selected_metadata, ex:Metadata_selection, -)
 
     used(ex:Metadata_combination, ex:Selected_metadata, -)
-    wasAssociatedWith(ex:Metadata_combination, ex:Charcoal,-)
-    wasAssociatedWith(ex:Metadata_selection, ex:Charcoal,-)
+    wasAssociatedWith(ex:Metadata_Generation, ex:Charcoal,-)
     wasAttributedTo(ex:Metadata_set, ex:Other_groups)
 
     //Bader - 5
