@@ -1,0 +1,121 @@
+document
+    prefix ex <http://example.com/>
+    prefix s <http://schema.org/>
+  
+    //Piyush - 1
+    entity(ex:Projects)
+    entity(ex:Cycling_to_work, [ prov:type='s:topic' ])
+    
+    activity(ex:ProjectSelection)
+
+    agent(ex:derek,
+         [s:role="Responsible for project selection"])
+
+    used(ex:ProjectSelection, ex:Projects, -)
+    
+    wasGeneratedBy(ex:Cycling_to_work, ex:ProjectSelection, -)
+    
+    wasAssociatedWith(ex:ProjectSelection, ex:derek, -)
+
+    //Ananya - 2
+    entity(ex:Survey, [prov:label="survey",
+                      prov:type='prov:Entity',
+                      s:description="Questionnaire-UK Cycling Statistics"])
+                      
+    activity(ex:Survey_Creation, [ prov:type='prov:Activity', prov:label="Survey_Creation", prov:description="Drafting the survey"])
+
+    agent(ex:Charlie,
+        [ prov:type='prov:Person', s:givenName="Charlie", 
+         s:email="Charlie@postgrad.manchester.ac.uk" ])
+
+    agent(ex:City_Council,
+        [ prov:type='prov:organisation', s:givenName="City_Council" ])
+
+    agent(ex:Qualtrics,
+        [ prov:type="prov:Software_Survey tool", s:givenName="Qualtrics", prov:description="External agent" ])
+       
+    wasAttributedTo(ex:Survey, ex:Charlie)  
+    wasAttributedTo(ex:Survey, ex:City_Council)  
+
+    actedOnBehalfOf(ex:City_Council, ex:Charlie)
+    actedOnBehalfOf(ex:City_Council, ex:Charlie, ex:Survey, [prov:label="Representative of"])
+  
+    wasGeneratedBy(ex:Survey, ex:Qualtrics,-)
+  
+    wasAssociatedWith(ex:Survey, ex:Survey_Creation, -)
+    wasAssociatedWith(ex:City_Council, ex:Charlie, -)
+    wasAssociatedWith(ex:Survey_Creation, ex:Qualtrics, -)
+
+    //Chenyu - 3
+    entity(ex:Survey_Research, [prov:label="Survey Research", 
+        prov:description="Research conducted through surveys"])
+    entity(ex:DDI_template, [prov:label="DDI Template", 
+        prov:description="Template used for DDI"])
+ 
+    activity(ex:Surveying,
+        [prov:label="Surveying",
+        prov:description="Activity involving conducting surveys"])
+    activity(ex:Metadata_Generation,
+        [prov:label="Metadata Generation",
+        prov:description="Generating metadata for the survey results"])
+ 
+    wasGeneratedBy(ex:Surveying, ex:Survey_Research, -)
+    wasGeneratedBy(ex:Survey_Research, ex:Metadata_Generation, -)
+    wasGeneratedBy(ex:DDI_template, ex:Metadata_Generation, -)
+
+    //James - 4
+    entity(ex:Metadata)
+    entity(ex:Metadata_set,[prov:type="Survey questions metadata"])
+    entity(ex:Selected_metadata, [ prov:type="Selected_metadata",s:example="How frequently do you visit the GP?" ])
+
+    activity(ex:Metadata_combination)
+    activity(ex:Metadata_selection)
+
+    agent(ex:Other_groups, [ prov:type="Small external group" ])
+    agent(ex:Charcoal, [ prov:label="Our collective group" ])
+   
+    used(ex:Metadata_combination, ex:Metadata, -)
+
+    used(ex:Metadata_selection, ex:Metadata_set, -)
+    wasGeneratedBy(ex:Selected_metadata, ex:Metadata_selection, -)
+
+    used(ex:Metadata_combination, ex:Selected_metadata, -)
+    wasAssociatedWith(ex:Metadata_combination, ex:Charcoal,-)
+    wasAssociatedWith(ex:Metadata_selection, ex:Charcoal,-)
+    wasAttributedTo(ex:Metadata_set, ex:Other_groups)
+
+    //Bader - 5
+    entity(ex:combined_metadata, [prov:label="Combined Metadata",
+                      prov:type='prov:Entity',
+                      s:description="combination of metadata from different sources"])
+    activity(ex:normalizing_and_standarizing, [ prov:type='prov:Activity', prov:label="normalizing & standarizing scales, final values will have range 0-1" ])
+    entity(ex:normalized_combined_metadata, [prov:label="normalization",
+                      prov:type='prov:Entity',
+                      s:description="Results of normalizing and standarizing the scales and values"])
+    entity(ex:index, [prov:label="Normalized and standarized index",
+                      prov:type='prov:Entity',
+                      s:description="value between 0-1, value closer to 1 indicates higher health and fitness awarness"])
+
+    agent(ex:bob,
+        [ prov:type='prov:Person', s:givenName="Bob", 
+        s:email="bob@postgrad.manchester.ac.uk" ])
+
+    agent(ex:alice,
+        [ prov:type='prov:Person', s:givenName="Alice", 
+        s:email="alice@postgrad.manchester.ac.uk" ])
+
+    wasAssociatedWith(ex:normalizing_and_standarizing, ex:bob, -)
+
+    used(ex:normalizing_and_standarizing, ex:combined_metadata,-)
+    wasDerivedFrom(ex:index, ex:normalized_combined_metadata)
+
+    wasAttributedTo(ex:index, ex:alice)
+    wasGeneratedBy(ex:normalized_combined_metadata, ex:normalizing_and_standarizing,-)
+
+    //Connecting the sections
+    used(ex:Survey_Creation, ex:Cycling_to_work, -)
+    used(ex:Surveying, ex:Survey, -)
+    used(ex:Metadata, ex:Metadata_Generation, -)
+    used(ex:Metadata_combination, ex:combined_metadata, -)
+
+endDocument
