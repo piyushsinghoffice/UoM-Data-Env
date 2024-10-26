@@ -108,9 +108,9 @@ wasGeneratedBy(ex:DDI_template, ex:Metadata_Generation, -)
     wasGeneratedBy(ex:normalized_combined_metadata, ex:normalizing_and_standarizing,-)
 
     //Connecting the sections
-    used(ex:Survey_Creation, ex:Cycling_to_work, -)
-    used(ex:Surveying, ex:Survey, -)
-    used(ex:Metadata, ex:Metadata_Generation, -)
-    used(ex:Metadata_combination, ex:combined_metadata, -)
+    used(ex:Survey_Creation, ex:Cycling_to_work, -) //Piyush -> Ananya
+    used(ex:Surveying, ex:Survey, -) //Ananya -> Chenyu
+    used(ex:Metadata, ex:Metadata_Generation, -) // Chenyu -> James
+    used(ex:Metadata_combination, ex:combined_metadata, -) // James -> Bader
 
 endDocument
