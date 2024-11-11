@@ -87,7 +87,7 @@ wasAssociatedWith(ex:Surveying, ex:Charcoal,-)
     wasGeneratedBy(ex:Kharki_Team_AND_Navy_Team,ex:MetadataSelection,-)
     wasAttributedTo(ex:Other_Group_Surveys, ex:Other_groups)
     wasAssociatedWith(ex:Datasets_combination,ex:bob,-)
-
+    wasAssociatedWith(ex:MetadataSelection,ex:alice,-)
 
 
 
