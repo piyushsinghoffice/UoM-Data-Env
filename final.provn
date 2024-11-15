@@ -101,11 +101,11 @@ wasAssociatedWith(ex:Surveying, ex:Charcoal, -)
         [prov:type='prov:Person', s:givenName="Alice", 
         s:email="alice@postgrad.manchester.ac.uk"])
 
+
     //Connecting the sections
     used(ex:Survey_Creation, ex:Cycling_To_Work, -)
     used(ex:Surveying, ex:Survey, -)
     wasGeneratedBy(ex:Our_Metadata, ex:Metadata_Generation, -)
-
     wasGeneratedBy(ex:Other_Group_Surveys, ex:Surveying, -)
     wasGeneratedBy(ex:Metadata_Set, ex:Metadata_Generation, -)
 
