@@ -91,6 +91,7 @@ wasAssociatedWith(ex:Surveying, ex:Charcoal,-)
 
 
 
+
     //Bader - 5
     entity(ex:combined_datasets, [prov:label="Combined Datasets",
                       prov:type='prov:Entity',
@@ -100,9 +101,9 @@ wasAssociatedWith(ex:Surveying, ex:Charcoal,-)
     entity(ex:normalized_dataset, [prov:label="normalization",
                       prov:type='prov:Entity',
                       s:description="Results of normalizing and standarizing the scales and values"])
-    entity(ex:calculated_scores)
-    entity(ex:conclusions_AND_insights)
-    activity(ex:score_analysis,prov:type='prov:activity',s:description="Analysis of scores")
+    entity(ex:Provenance_Graph)
+    entity(ex:Provenance_Report)
+    activity(ex:analysis,prov:type='prov:activity',s:description="Analysis of normalized datasets")
     agent(ex:bob,
         [ prov:type='prov:Person', s:givenName="Bob", 
         s:email="bob@postgrad.manchester.ac.uk" ])
@@ -115,17 +116,16 @@ wasAssociatedWith(ex:Surveying, ex:Charcoal,-)
 
     used(ex:normalizing_and_standarizing, ex:Filtered_data,-)
    wasDerivedFrom(ex:Filtered_data,ex:combined_datasets)
-    wasDerivedFrom(ex:calculated_scores, ex:normalized_dataset)
-
-    wasAttributedTo(ex:calculated_scores, ex:alice)
+   wasDerivedFrom(ex:Provenance_Report,ex:Provenance_Graph)
+    used(ex:analysis,ex:normalized_dataset,-)
+    wasAssociatedWith(ex:analysis,ex:alice,-)
     wasGeneratedBy(ex:normalized_dataset, ex:normalizing_and_standarizing,-)
-    used(ex:score_analysis, ex:calculated_scores,-)
     //Connecting the sections
     used(ex:Survey_Creation, ex:Cycling_to_work, -)
     used(ex:Surveying, ex:Survey, -)
     wasGeneratedBy(ex:Our_Metadata, ex:Metadata_Generation, -)
     wasAssociatedWith(ex:Metadata_Generation,ex:Charcoal,-)
-    wasGeneratedBy(ex:conclusions_AND_insights, ex:score_analysis,-)
+    wasGeneratedBy(ex:Provenance_Graph, ex:analysis,-)
     wasGeneratedBy(ex:combined_datasets, ex:Datasets_combination, -)
 
 endDocument
